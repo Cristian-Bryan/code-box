@@ -1,0 +1,55 @@
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Formulário elaborado</title>
+	</head>
+	<body>
+		<form action="gravar.php" method="GET"></form>
+		<h1>Formulário</h1>
+		<fieldset>
+			<legend>Dados pessoais</legend>
+			<label>Nome:<input type="text" name="nome" /></label><br />
+			<label>Endereço:<input type="text" name="Endereço" /></label><br />
+			<label>Cidade:<input type="text" name="Cidade" /></label><br />
+			<label>Estado:
+			<select name="estado">
+				<option value="sp"> São Paulo </option>
+				<option value="rj"> Rio de Janeiro </option>
+			</select>
+			</label>
+		</fieldset>
+		<br />
+		
+		<fieldset>
+			<legend>Dados profissionais</legend>
+			<label>Natureza do Cargo </label>
+			<br />
+			<label>
+				<input type="radio" name="cargo" value="1" checked> Gerência
+				<input type="radio" name="cargo" value="2" > Financeiro
+				<input type="radio" name="cargo" value="3" > Recepção
+				<input type="radio" name="cargo" value="4" > Administrativo
+				<input type="radio" name="cargo" value="5" > Jurídico
+			</label>
+			<br />
+			<br />
+			<label>Àrea de interesse</label>
+			<br />
+			<label>
+				<input type="checkbox" name="area1" value="com" /> Computação
+				<input type="checkbox" name="area2" value="eng" /> Biologia
+				<input type="checkbox" name="area3" value="bio" /> Meio Ambiente
+				<input type="checkbox" name="area4" value="psi" /> Engenharia
+				<input type="checkbox" name="area4" value="psi" /> História
+				
+			</label>
+			<p>Mini-currículo:<textarea name="mini"
+                         cols="20" rows="5"></textarea></p>
+		</fieldset>
+		<br />
+		<button>enviar</button>
+		<button>limpar</button>
+	
+	</body>
+</html>
