@@ -1,0 +1,46 @@
+
+for (let i = 1; i<=10; i++) {
+    if (i % 3 === 0 & i % 5 === 0 ){
+        console.log('fizzbuzz!');
+    }
+    else if(i % 3 === 0){
+        console.log('fizz');
+    }
+    else if(i % 5 === 0){
+        console.log('buzz');
+    }
+    else {
+         console.log(i);
+    }
+}
+------------------------------------
+for (let i = 0; i<=10; i++) {
+    console.log(i);
+}
+-------------------------------------
+let x = 1;
+let y = '1';
+let z = '2';
+console.log(x==z);
+-----------------------------------------
+if (media >= 7 ){
+    console.log('aluno aprovado!');
+} else{
+    console.log('aluno reprovado!');
+}
+-------------------------------------------
+let a = 10;
+let b = 6;
+let soma = a + b;
+console.log(soma);
+--------------------------------------------
+alert('ola mundo')
+let nome = prompt('qual o seu nome?');
+alert(`seja bem vindo ${nome}`)
+---------------------------------------------
+let senha = 'admin123';
+let senhaUser = prompt('insira a sua senha: ');
+while (senha !== senhaUser) {
+     senhaUser = prompt('insira a sua senha: ');   
+}
+alert('senha correta!');
