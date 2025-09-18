@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Gestão de Estoque</title>
+    <style>
+        /* Estilos Globais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            color: #555;
+        }
+
+        /* Estilos do Menu de Navegação */
+        .nav-menu {
+            display: flex;
+            justify-content: space-around;
+            background-color: #005f73;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu button:hover {
+            background-color: #0a9396;
+            border-radius: 5px;
+        }
+
+        /* Estilos dos Cards (Dashboard) */
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #e9d8a6;
+            border-left: 5px solid #bb9457;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #4a280e;
+        }
+
+        /* Estilos de Formulários */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button.primary-btn {
+            background-color: #005f73;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button.primary-btn:hover {
+            background-color: #0a9396;
+        }
+
+        /* Estilos de Tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sistema de Gestão de Estoque</h1>
+
+        <div class="nav-menu">
+            <button onclick="showSection('dashboard')">Página Inicial</button>
+            <button onclick="showSection('gerenciar-produtos')">Gerenciar Produtos</button>
+            <button onclick="showSection('controle-estoque')">Controle de Estoque</button>
+            <button onclick="showSection('gerar-relatorios')">Gerar Relatórios</button>
+        </div>
+
+        <div id="dashboard" class="content-section">
+            <h2>Página Inicial</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Produtos em Estoque</h3>
+                    <p>150 itens</p>
+                </div>
+                <div class="card">
+                    <h3>Produtos Críticos</h3>
+                    <p>5 itens</p>
+                </div>
+                <div class="card">
+                    <h3>Entradas Hoje</h3>
+                    <p>25 itens</p>
+                </div>
+                <div class="card">
+                    <h3>Saídas Hoje</h3>
+                    <p>10 itens</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="gerenciar-produtos" class="content-section" style="display: none;">
+            <h2>Gerenciar Produtos</h2>
+            
+            <h3>Adicionar Novo Produto</h3>
+            <form>
+                <div class="form-group">
+                    <label for="nome_produto">Nome do Produto:</label>
+                    <input type="text" id="nome_produto" name="nome_produto" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao_produto">Descrição:</label>
+                    <input type="text" id="descricao_produto" name="descricao_produto">
+                </div>
+                <div class="form-group">
+                    <label for="preco_unitario">Preço Unitário:</label>
+                    <input type="number" step="0.01" id="preco_unitario" name="preco_unitario" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria:</label>
+                    <input type="text" id="categoria" name="categoria">
+                </div>
+                <button type="submit" class="primary-btn">Adicionar Produto</button>
+            </form>
+
+            <br>
+            <h3>Atualizar / Remover Produto</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>Monitor LED</td>
+                        <td>Eletrônicos</td>
+                        <td>
+                            <button class="primary-btn">Atualizar</button>
+                            <button class="primary-btn" style="background-color: #d62828;">Remover</button>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+
+        <div id="controle-estoque" class="content-section" style="display: none;">
+            <h2>Controle de Estoque</h2>
+            
+            <h3>Registrar Movimentação</h3>
+            <form>
+                <div class="form-group">
+                    <label for="tipo_movimentacao">Tipo de Movimentação:</label>
+                    <select id="tipo_movimentacao" name="tipo_movimentacao">
+                        <option value="entrada">Entrada</option>
+                        <option value="saida">Saída</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="id_produto_mov">Produto:</label>
+                    <input type="text" id="id_produto_mov" name="id_produto_mov" placeholder="ID ou nome do produto">
+                </div>
+                <div class="form-group">
+                    <label for="quantidade_mov">Quantidade:</label>
+                    <input type="number" id="quantidade_mov" name="quantidade_mov" required>
+                </div>
+                <button type="submit" class="primary-btn">Registrar</button>
+            </form>
+        </div>
+
+        <div id="gerar-relatorios" class="content-section" style="display: none;">
+            <h2>Gerar Relatórios</h2>
+            
+            <h3>Relatório de Movimentação</h3>
+            <p>Selecione um período para gerar o relatório de entradas e saídas.</p>
+            <button class="primary-btn">Gerar Relatório de Movimentação</button>
+            
+            <h3>Relatório de Estoque Crítico</h3>
+            <p>Visualize todos os produtos com quantidade abaixo do mínimo.</p>
+            <button class="primary-btn">Gerar Relatório de Estoque Crítico</button>
+            
+            <h3>Relatório de Inventário</h3>
+            <p>Acesse os relatórios de contagem de inventário.</p>
+            <button class="primary-btn">Gerar Relatório de Inventário</button>
+        </div>
+
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Esconde todas as seções
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            // Mostra a seção desejada
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
